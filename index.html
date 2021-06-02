@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="title">Вид пленки</h1>
+      <div class="checkbox-wrapper">
+      <label class="label" for="check1">
+        Полотно
+      <input class="checkbox" id="check1" type="checkbox">
+      </label>
+      <label class="label" for="check2">
+        Рукав
+      <input class="checkbox" id="check2" type="checkbox">
+      </label>
+      <label class="label" for="check3">
+        Полурукав
+      <input class="checkbox" id="check3" type="checkbox">
+      </label>
+      </div>
+      <div class="fields-wrapper">
+      <label for="field1">Ширина пленки</label>
+      <input class="input" id="field1" type="number">
+      <label for="field2">Толщина пленки</label>
+      <input class="input" id="field2" type="number">
+      <label for="field3">Фальцовка</label>
+      <input class="input" id="field3" type="number">
+      <label for="field4">Намотка</label>
+      <input class="input" id="field4" type="number">
+      <button class="button" type="button">Рассчитать</button>
+        <div id="result">рассчет</div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+.title::before {
+  content: '\2611';
+  margin-right: .5rem;
+
+}
+.checkbox-wrapper {
+  margin-bottom: 2rem;
+}
+.checkbox {
+
+}
+.input {
+  margin: .5rem 0 .5rem 0;
+  min-width: 15%;
+}
+.label {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding: .5rem;
+  border-radius:6%;
+  margin: 0 .5rem 0 0;
+}
+.fields-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button  {
+  margin-top: 1rem;
+  padding: .5rem;
+  font-size: 1rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+#result {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid green;
+}
