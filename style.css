@@ -20,7 +20,8 @@
 }
 .input {
   margin: .5rem 0 .5rem 0;
-  min-width: 15%;
+  min-width: 25%;
+  min-height: 1.5rem;
 }
 .label {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -33,6 +34,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#field2 {
+  display: none;
+}
+.label-field2{
+  display: none;
 }
 
 .button  {
