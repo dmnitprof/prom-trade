@@ -3,6 +3,7 @@ import './style.css'
 const radio1 = document.querySelector('#radio1')
 const radio2 = document.querySelector('#radio2')
 const radio3 = document.querySelector('#radio3')
+const radio4 = document.querySelector('#radio4')
 const field1 = document.querySelector('#field1')
 const labelfield2 = document.querySelector('.label-field2')
 const field2 = document.querySelector('#field2')
@@ -13,25 +14,34 @@ const result = document.querySelector('#result')
 
 
 radio1.addEventListener('change', function () {
-    if (!radio2.checked) {
+    if (!radio3.checked) {
         field2.style.display = 'none'
         labelfield2.style.display = 'none'
     }
 })
 
 radio2.addEventListener('change', function () {
-    if (radio2.checked) {
-        field2.style.display = 'block'
-        labelfield2.style.display = 'block'
-    }
-})
-
-radio3.addEventListener('change', function () {
     if (!radio2.checked) {
         field2.style.display = 'none'
         labelfield2.style.display = 'none'
     }
 })
+
+radio3.addEventListener('change', function () {
+    if (radio3.checked) {
+        field2.style.display = 'block'
+        labelfield2.style.display = 'block'
+    }
+})
+
+
+radio4.addEventListener('change', function () {
+    if (!radio4.checked) {
+        field2.style.display = 'none'
+        labelfield2.style.display = 'none'
+    }
+})
+
 
 button.onclick = function () {
     let vfilds1 = +field1.value
