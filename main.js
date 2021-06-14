@@ -67,6 +67,7 @@ button.onclick = function () {
 
     if(radio1.checked && field4.getAttribute('disabled')){
         calculation = (vfilds1 * vfilds3)
+
     }
     if(radio1.checked && field3.getAttribute('disabled')){
         calculation = (vfilds1 * vfilds4)
@@ -89,11 +90,18 @@ button.onclick = function () {
     if (radio4.checked && field3.getAttribute('disabled')){
         calculation = ((vfilds1 * 2) + (vfilds2 * 4)) * vfilds4
     }
-    if(!vfilds1 && !vfilds3) {
-        alert('Заполните поля')
+    if(!vfilds1 || !vfilds3) {
+        let info =`<span class="danger">Заполните нужные поля!</span>`
+        result.innerHTML = info
+    }else {
+        result.innerHTML = `${calculation}<span>,&nbsp;кг</span>`
     }
 
-    result.innerHTML = `${calculation}<span>,&nbsp;кг</span>`
+    let inputs = document.querySelectorAll('input[type=number]')
+    for (let i = 0;  i < inputs.length; i++) {
+        inputs[i].value = ''
+    }
+
 
 }
 
