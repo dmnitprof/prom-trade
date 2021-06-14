@@ -12,58 +12,89 @@ const field4 = document.querySelector('#field4')
 const button = document.querySelector('.button')
 const result = document.querySelector('#result')
 
-
-radio1.addEventListener('change', function () {
-    if (!radio3.checked) {
-        field2.style.display = 'none'
-        labelfield2.style.display = 'none'
+radio4.addEventListener('change', function () {
+    if(radio4.checked) {
+        field2.classList.add('visible')
+        labelfield2.classList.add('visible')
+    }
+})
+radio3.addEventListener('change', function () {
+    if(radio3.checked) {
+        field2.classList.remove('visible')
+        labelfield2.classList.remove('visible')
     }
 })
 
 radio2.addEventListener('change', function () {
-    if (!radio2.checked) {
-        field2.style.display = 'none'
-        labelfield2.style.display = 'none'
+    if(radio2.checked) {
+        field2.classList.remove('visible')
+        labelfield2.classList.remove('visible')
     }
 })
 
-radio3.addEventListener('change', function () {
-    if (radio3.checked) {
-        field2.style.display = 'block'
-        labelfield2.style.display = 'block'
+radio1.addEventListener('change', function () {
+    if(radio1.checked) {
+        field2.classList.remove('visible')
+        labelfield2.classList.remove('visible')
     }
 })
 
 
-radio4.addEventListener('change', function () {
-    if (!radio4.checked) {
-        field2.style.display = 'none'
-        labelfield2.style.display = 'none'
+
+field3.addEventListener('input', function () {
+    if (field3.value) {
+        field4.setAttribute('disabled', 'disabled')
+        field4.value = ''
+
+
+    }else {
+        field4.removeAttribute('disabled', '')
+    }
+})
+
+field4.addEventListener('input', function () {
+    if (field4.value) {
+        field3.setAttribute('disabled', 'disabled')
+        field3.value = ''
+
+    }else {
+        field3.removeAttribute('disabled', '')
     }
 })
 
 
 button.onclick = function () {
+
     let vfilds1 = +field1.value
     let vfilds2 = +field2.value
     let vfilds3 = +field3.value
     let vfilds4 = +field4.value
-
-    // field3.addEventListener('input', function () {
-    //     if (!vfilds3) {
-    //         field4.setAttribute('disabled', 'disabled')
-    //     }
-    // })
-    //
-    // field4.addEventListener('input', function () {
-    //     if (!vfilds4) {
-    //         field3.setAttribute('disabled', 'disabled')
-    //     }else {
-    //         field3.removeAttribute('disabled', '')
-    //     }
-    // })
     let calculation
-    calculation = vfilds1 * vfilds3
+
+    if(radio1.checked && field4.getAttribute('disabled')){
+        calculation = (vfilds1 * vfilds3)
+    }
+    if(radio1.checked && field3.getAttribute('disabled')){
+        calculation = (vfilds1 * vfilds4)
+    }
+    if(radio2.checked && field4.getAttribute('disabled')) {
+        calculation = (vfilds1 * 2) * vfilds3
+    }
+    if(radio2.checked && field3.getAttribute('disabled')){
+        calculation = (vfilds1 * 2) * vfilds4
+    }
+    if(radio3.checked && field4.getAttribute('disabled')) {
+        calculation = (vfilds1 * 2) * vfilds3
+    }
+    if(radio3.checked && field3.getAttribute('disabled')){
+        calculation =(vfilds1 * 2)  * vfilds4
+    }
+    if(radio4.checked && field4.getAttribute('disabled')) {
+        calculation =((vfilds1 * 2) + (vfilds2 * 4)) * vfilds3
+    }
+    if (radio4.checked && field3.getAttribute('disabled')){
+        calculation = ((vfilds1 * 2) + (vfilds2 * 4)) * vfilds4
+    }
     result.innerHTML = calculation
 
 }

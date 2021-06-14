@@ -15,19 +15,23 @@
 .checkbox-wrapper {
   margin-bottom: 2rem;
 }
-.checkbox {
 
-}
 .input {
   margin: .5rem 0 .5rem 0;
   min-width: 25%;
   min-height: 1.5rem;
 }
+
 .label {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   padding: .5rem;
   border-radius:6%;
   margin: 0 .5rem 0 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+
 }
 .fields-wrapper{
   display: flex;
@@ -35,11 +39,14 @@
   justify-content: center;
   align-items: center;
 }
-#field2 {
+.field2 {
   display: none;
 }
 .label-field2{
   display: none;
+}
+.visible {
+  display: block;
 }
 
 .button  {
