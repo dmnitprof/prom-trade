@@ -44,9 +44,6 @@ radio1.addEventListener('change', function () {
 field3.addEventListener('input', function () {
     if (field3.value) {
         field4.setAttribute('disabled', 'disabled')
-        field4.value = ''
-
-
     }else {
         field4.removeAttribute('disabled', '')
     }
@@ -55,13 +52,10 @@ field3.addEventListener('input', function () {
 field4.addEventListener('input', function () {
     if (field4.value) {
         field3.setAttribute('disabled', 'disabled')
-        field3.value = ''
-
     }else {
         field3.removeAttribute('disabled', '')
     }
 })
-
 
 button.onclick = function () {
 
@@ -95,7 +89,11 @@ button.onclick = function () {
     if (radio4.checked && field3.getAttribute('disabled')){
         calculation = ((vfilds1 * 2) + (vfilds2 * 4)) * vfilds4
     }
-    result.innerHTML = calculation
+    if(!vfilds1 && !vfilds3) {
+        alert('Заполните поля')
+    }
+
+    result.innerHTML = `${calculation}<span>,&nbsp;кг</span>`
 
 }
 
