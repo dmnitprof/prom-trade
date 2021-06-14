@@ -90,7 +90,7 @@ button.onclick = function () {
     if (radio4.checked && field3.getAttribute('disabled')){
         calculation = ((vfilds1 * 2) + (vfilds2 * 4)) * vfilds4
     }
-    if(!vfilds1 || !vfilds3) {
+    if(!vfilds1 && !vfilds3 && !vfilds4) {
         let info =`<span class="danger">Заполните нужные поля!</span>`
         result.innerHTML = info
     }else {
@@ -101,8 +101,6 @@ button.onclick = function () {
     for (let i = 0;  i < inputs.length; i++) {
         inputs[i].value = ''
     }
-
-
 }
 
 
