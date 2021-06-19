@@ -72,7 +72,7 @@ for (const input of inputs) {
 
 button.addEventListener('click', (e) => {
     if (!radio.checked) {
-        innerHTML(result, `<span class="danger">Заполните нужные поля!</span>`)
+        innerHTML(result, `<span class="danger">Выберите вид изготовления!</span>`)
     }
 
     if (getCheckboxNumber === 1) {
@@ -88,7 +88,8 @@ button.addEventListener('click', (e) => {
         innerHTML(result, `   ${(+field1.value * 2) * +field3.value}<span>,&nbsp;кг</span>`)
     }
     if (getCheckboxNumber === 4) {
-        innerHTML(result, `${((+field1.value * 2) + (+field2.value * 4)) * +field3.value}<span>,&nbsp;кг</span>`)
+        let roundField3 = Math.round(+field3.value)
+        innerHTML(result, `${((+field1.value * 2) + (+field2.value * 4)) *  roundField3}<span>,&nbsp;кг</span>`)
     }
 
 })
