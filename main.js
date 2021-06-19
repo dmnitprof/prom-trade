@@ -1,106 +1,99 @@
 import './style.css'
 
-const radio1 = document.querySelector('#radio1')
-const radio2 = document.querySelector('#radio2')
-const radio3 = document.querySelector('#radio3')
-const radio4 = document.querySelector('#radio4')
+const radioButtons = document.querySelectorAll('.radio')
+const radio = document.querySelector('.radio')
+const inputs = document.querySelectorAll('.input')
 const field1 = document.querySelector('#field1')
-const labelfield2 = document.querySelector('.label-field2')
 const field2 = document.querySelector('#field2')
 const field3 = document.querySelector('#field3')
 const field4 = document.querySelector('#field4')
+const fieldInput2 = document.querySelector('.field2')
+const labelField2 = document.querySelector('.label-field2')
 const button = document.querySelector('.button')
-const result = document.querySelector('#result')
+let result = document.querySelector('#result')
 
-radio4.addEventListener('change', function () {
-    if(radio4.checked) {
-        field2.classList.add('visible')
-        labelfield2.classList.add('visible')
-    }
-})
-radio3.addEventListener('change', function () {
-    if(radio3.checked) {
-        field2.classList.remove('visible')
-        labelfield2.classList.remove('visible')
-    }
-})
+let getCheckboxNumber
+let getInputNumber
 
-radio2.addEventListener('change', function () {
-    if(radio2.checked) {
-        field2.classList.remove('visible')
-        labelfield2.classList.remove('visible')
-    }
-})
+/*============================================================*/
 
-radio1.addEventListener('change', function () {
-    if(radio1.checked) {
-        field2.classList.remove('visible')
-        labelfield2.classList.remove('visible')
-    }
-})
+//   radioButtons
+for (const radio of radioButtons) {
+    radio.addEventListener('change', (e) => {
 
+        getCheckboxNumber = parseInt(e.target.getAttribute('data-check'))
 
+        if (radio.checked && getCheckboxNumber === 4) {
+            fieldInput2.style.display = 'block'
+            labelField2.style.display = 'block'
+        } else {
 
-field3.addEventListener('input', function () {
-    if (field3.value) {
-        field4.setAttribute('disabled', 'disabled')
-    }else {
-        field4.removeAttribute('disabled', '')
-    }
-})
+            fieldInput2.style.display = 'none'
+            labelField2.style.display = 'none'
 
-field4.addEventListener('input', function () {
-    if (field4.value) {
-        field3.setAttribute('disabled', 'disabled')
-    }else {
-        field3.removeAttribute('disabled', '')
-    }
-})
+        }
 
-button.onclick = function () {
-
-    let vfilds1 = +field1.value
-    let vfilds2 = +field2.value
-    let vfilds3 = +field3.value
-    let vfilds4 = +field4.value
-    let calculation
-
-    if(radio1.checked && field4.getAttribute('disabled')){
-        calculation = (vfilds1 * vfilds3)
-
-    }
-    if(radio1.checked && field3.getAttribute('disabled')){
-        calculation = (vfilds1 * vfilds4)
-    }
-    if(radio2.checked && field4.getAttribute('disabled')) {
-        calculation = (vfilds1 * 2) * vfilds3
-    }
-    if(radio2.checked && field3.getAttribute('disabled')){
-        calculation = (vfilds1 * 2) * vfilds4
-    }
-    if(radio3.checked && field4.getAttribute('disabled')) {
-        calculation = (vfilds1 * 2) * vfilds3
-    }
-    if(radio3.checked && field3.getAttribute('disabled')){
-        calculation =(vfilds1 * 2)  * vfilds4
-    }
-    if(radio4.checked && field4.getAttribute('disabled')) {
-        calculation =((vfilds1 * 2) + (vfilds2 * 4)) * vfilds3
-    }
-    if (radio4.checked && field3.getAttribute('disabled')){
-        calculation = ((vfilds1 * 2) + (vfilds2 * 4)) * vfilds4
-    }
-    if(!vfilds1 && !vfilds3 && !vfilds4) {
-        let info =`<span class="danger">Заполните нужные поля!</span>`
-        result.innerHTML = info
-    }else {
-        result.innerHTML = `${calculation}<span>,&nbsp;кг</span>`
-    }
-
-    let inputs = document.querySelectorAll('input[type=number]')
-    for (let i = 0;  i < inputs.length; i++) {
-        inputs[i].value = ''
-    }
+    })
 }
 
+/*============================================================*/
+//   inputs
+
+for (const input of inputs) {
+    input.addEventListener('input', (e) => {
+        getInputNumber = parseInt(e.target.getAttribute('data-input'))
+        let getInput = e.target.value
+        if (getInput && getInputNumber === 3) {
+            inputs[3].setAttribute('disabled', 'disabled')
+            inputs[3].classList.add('disabled')
+            field4.value = field3.value * 1000
+
+        } else if (!getInput && getInputNumber === 3) {
+            inputs[3].removeAttribute('disabled', '')
+            inputs[3].classList.remove('disabled')
+            field4.value = ''
+        }
+
+        if (getInput && getInputNumber === 4) {
+            inputs[2].setAttribute('disabled', 'disabled')
+            inputs[2].classList.add('disabled')
+            field3.value = field4.value / 1000
+
+        } else if (!getInput && getInputNumber === 4) {
+            inputs[2].removeAttribute('disabled', '')
+            inputs[2].classList.remove('disabled')
+            field3.value = ''
+        }
+    })
+}
+
+/*============================================================*/
+// calculation
+
+button.addEventListener('click', (e) => {
+    if (!radio.checked) {
+        innerHTML(result, `<span class="danger">Заполните нужные поля!</span>`)
+    }
+
+    if (getCheckboxNumber === 1) {
+        innerHTML(result, `${+field1.value * +field3.value}<span>,&nbsp;кг</span>`)
+
+    }
+    if (getCheckboxNumber === 2) {
+
+        innerHTML(result, `${(+field1.value * 2) * +field3.value}<span>,&nbsp;кг</span>`)
+
+    }
+    if (getCheckboxNumber === 3) {
+        innerHTML(result, `   ${(+field1.value * 2) * +field3.value}<span>,&nbsp;кг</span>`)
+    }
+    if (getCheckboxNumber === 4) {
+        innerHTML(result, `${((+field1.value * 2) + (+field2.value * 4)) * +field3.value}<span>,&nbsp;кг</span>`)
+    }
+
+})
+
+function innerHTML(element, value) {
+    return element.innerHTML = `${value}`
+}
 
